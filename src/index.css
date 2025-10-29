@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #121212;
+    color: #F5F5F5;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Enhanced Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #121212;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: #121212;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #D4AF37;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #E4BF47;
+  }
+
+  /* Custom Selection */
+  ::selection {
+    background: #8B0000;
+    color: #D4AF37;
+  }
+
+  ::-moz-selection {
+    background: #8B0000;
+    color: #D4AF37;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* ============================================
+     PREMIUM BUTTONS WITH SHINE EFFECT
+     ============================================ */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #8B0000 0%, #a00000 100%);
+    color: #F5F5F5;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(139, 0, 0, 0.6);
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #D4AF37 0%, #f0d674 100%);
+    color: #121212;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  }
+
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+  }
+
+  .btn-secondary:hover::before {
+    left: 100%;
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-outline {
+    position: relative;
+    border: 2px solid #D4AF37;
+    color: #D4AF37;
+    padding: 0.875rem 1.875rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #D4AF37;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+  }
+
+  .btn-outline:hover {
+    color: #121212;
+    border-color: #E4BF47;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  }
+
+  .btn-outline:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-outline:active {
+    transform: scale(0.95);
+  }
+
+  /* ============================================
+     ENHANCED INPUT FIELDS
+     ============================================ */
+  .input-field {
+    width: 100%;
+    background-color: #1a1a1a;
+    border: 2px solid #2a2a2a;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.125rem;
+    color: #F5F5F5;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    font-size: 1rem;
+  }
+
+  .input-field::placeholder {
+    color: #9ca3af;
+    transition: color 0.3s;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15), 0 4px 20px rgba(212, 175, 55, 0.2);
+    background-color: #1f1f1f;
+  }
+
+  .input-field:focus::placeholder {
+    color: #b8b8b8;
+  }
+
+  /* ============================================
+     3D CARDS WITH HOVER EFFECT
+     ============================================ */
+  .card {
+    background-color: #1a1a1a;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #2a2a2a;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+  }
+
+  .card:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+    transform: translateY(-10px) rotateX(2deg);
+  }
+
+  .card-3d {
+    background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid #2a2a2a;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .card-3d::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+    border-radius: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .card-3d:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 
+      0 25px 70px rgba(0, 0, 0, 0.6),
+      0 0 50px rgba(212, 175, 55, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-15px) rotateX(3deg) scale(1.02);
+  }
+
+  .card-3d:hover::after {
+    opacity: 1;
+  }
+
+  /* ============================================
+     GLASS MORPHISM EFFECT
+     ============================================ */
+  .glass-effect {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ============================================
+     GRADIENT BACKGROUNDS
+     ============================================ */
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(139, 0, 0, 0.3) 100%);
+    position: relative;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .bg-gradient-wine {
+    background: linear-gradient(135deg, #8B0000 0%, #5a0000 50%, #8B0000 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #f0d674 50%, #D4AF37 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  /* ============================================
+     ANIMATED TEXT GRADIENTS
+     ============================================ */
+  .text-gradient-gold {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, #D4AF37 0%, #f0d674 50%, #D4AF37 100%);
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .text-gradient-wine {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, #8B0000 0%, #ff0000 50%, #8B0000 100%);
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* ============================================
+     LOADING SHIMMER EFFECT
+     ============================================ */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(26, 26, 26, 0.4) 0%,
+      rgba(42, 42, 42, 0.6) 50%,
+      rgba(26, 26, 26, 0.4) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /* ============================================
+     FLOATING ANIMATION
+     ============================================ */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* ============================================
+     PULSE GLOW FOR CTAs
+     ============================================ */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .pulse-glow-gold {
+    animation: pulse-glow-gold 2s ease-in-out infinite;
+  }
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.8), 0 0 60px rgba(139, 0, 0, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulse-glow-gold {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .transition-bounce {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .transition-slow {
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
