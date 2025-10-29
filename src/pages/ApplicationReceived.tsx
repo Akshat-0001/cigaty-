@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Mail, Clock, FileCheck, Users, Shield, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Mail, FileCheck, Users, Shield, ArrowRight } from 'lucide-react';
 import Button from '../components/forms/Button';
 
 const ApplicationReceived = () => {
