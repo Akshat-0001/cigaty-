@@ -108,7 +108,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-dark-lighter border-t border-dark-light"
+            className="lg:hidden bg-dark-lighter/98 backdrop-blur-lg border-t border-dark-light absolute top-full left-0 right-0 shadow-2xl z-50"
           >
             <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
               {navLinks.map((link) => (

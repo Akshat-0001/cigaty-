@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CursorBottle = () => {
   const bottleRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Mouse position tracking with spring physics for smooth following
   const mouseX = useMotionValue(0);
@@ -14,6 +15,28 @@ const CursorBottle = () => {
   const bottleY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Check if device is desktop (no touch support and screen width > 1024px)
+    const checkIfDesktop = () => {
+      const hasNoTouch = !('ontouchstart' in window) && !navigator.maxTouchPoints;
+      const isLargeScreen = window.innerWidth > 1024;
+      setIsDesktop(hasNoTouch && isLargeScreen);
+    };
+
+    checkIfDesktop();
+    window.addEventListener('resize', checkIfDesktop);
+
+    return () => {
+      window.removeEventListener('resize', checkIfDesktop);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only set up mouse tracking on desktop
+    if (!isDesktop) {
+      document.body.style.cursor = 'auto';
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       // Follow cursor exactly
       mouseX.set(e.clientX);
@@ -30,7 +53,12 @@ const CursorBottle = () => {
       // Restore default cursor
       document.body.style.cursor = 'auto';
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isDesktop]);
+
+  // Don't render on mobile/tablet
+  if (!isDesktop) {
+    return null;
+  }
 
   return (
     <>

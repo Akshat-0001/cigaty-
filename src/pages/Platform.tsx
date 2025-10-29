@@ -24,6 +24,7 @@ const Platform = () => {
       icon: Package,
       title: 'Full Product Management',
       description: 'Comprehensive catalog management system with unlimited product listings, detailed specifications, and multi-currency pricing.',
+      color: 'from-wine to-red-700',
       features: [
         'Unlimited product listings',
         'Rich media support (images, videos, documents)',
@@ -37,6 +38,7 @@ const Platform = () => {
       icon: TrendingUp,
       title: 'Price Comparison & Analytics',
       description: 'Real-time market intelligence and competitive pricing analysis to make informed decisions.',
+      color: 'from-gold to-yellow-600',
       features: [
         'Real-time market data',
         'Competitive pricing insights',
@@ -50,6 +52,7 @@ const Platform = () => {
       icon: Shield,
       title: 'Market Restrictions & Compliance',
       description: 'Automated compliance checking and region-specific regulations management to ensure legal trading.',
+      color: 'from-wine to-red-700',
       features: [
         'Country-specific regulation database',
         'Automated compliance checking',
@@ -63,6 +66,7 @@ const Platform = () => {
       icon: Megaphone,
       title: 'Brand Activation Tools',
       description: 'Powerful marketing suite to amplify your brand presence and reach target markets effectively.',
+      color: 'from-gold to-yellow-600',
       features: [
         'Featured product promotions',
         'Targeted email campaigns',
@@ -76,6 +80,7 @@ const Platform = () => {
       icon: Bell,
       title: 'Alerts & Notifications',
       description: 'Stay informed with instant updates on all critical business activities and opportunities.',
+      color: 'from-wine to-red-700',
       features: [
         'Real-time order notifications',
         'Price change alerts',
@@ -89,6 +94,7 @@ const Platform = () => {
       icon: Globe,
       title: 'Global Web Responsiveness',
       description: 'Seamless experience across all devices with optimized performance for mobile, tablet, and desktop.',
+      color: 'from-gold to-yellow-600',
       features: [
         'Mobile-first design',
         'Progressive web app (PWA)',
@@ -131,11 +137,6 @@ const Platform = () => {
       title: '24/7 Support',
       description: 'Dedicated support team ready to assist you',
     },
-  ];
-
-  const integrations = [
-    'QuickBooks', 'SAP', 'Oracle', 'Salesforce', 'Shopify', 'WooCommerce',
-    'FedEx', 'DHL', 'UPS', 'Stripe', 'PayPal', 'Square'
   ];
 
   return (
@@ -360,42 +361,6 @@ const Platform = () => {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="py-24 bg-dark-lighter">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-light mb-4">
-              Seamless <span className="text-gradient-gold">Integrations</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Connect with your favorite tools and services
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
-            {integrations.map((integration, index) => (
-              <motion.div
-                key={integration}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-dark border border-dark-light rounded-lg p-6 flex items-center justify-center
-                         hover:border-gold/50 transition-colors cursor-pointer"
-              >
-                <span className="text-light font-medium text-center">{integration}</span>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
